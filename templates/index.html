@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IEEE Citation Generator</title>
+</head>
+<body>
+    <h1>IEEE Citation Generator</h1>
+    <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        
+        {{ form.author.label }}: {{ form.author }}
+        {{ form.title.label }}: {{ form.title }}
+        {{ form.website_name.label }}: {{ form.website_name }}
+        {{ form.publication_date.label }}: {{ form.publication_date }}
+        {{ form.url.label }}: {{ form.url }}
+        {{ form.access_date.label }}: {{ form.access_date }}
+        
+        {{ form.submit }}
+    </form>
+</body>
+</html>

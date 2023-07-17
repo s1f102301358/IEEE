@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale= 1.0">
+    <title>IEEE Citation Generator</title>
+    <style>
+        body {
+            flex-direction: column;
+            align-items: center;
+            font-family: Arial, sans-serif;
+        }
+        input, textarea {
+            margin: 4px;
+        }
+        .error {
+            border: 2px solid red;
+        }
+    </style>
+</head>
+<body>
+<h1>IEEE Citation Generator</h1>
+<p id="error_message" style="color: red; display: none;"></p>
+<label for="author">著者　　　　　　</label><input type="text" id="author" placeholder="著者名"><br>
+<label for="title">タイトル　　　　</label><input type="text" id="title" placeholder="記事名"><br>
+<label for="source">ソース　　　　　</label><input type="text" id="source" placeholder="ソース名"><br>
+<label for="url">URL　　　　　　</label><input type="text" id="url" placeholder="Webサイトのリンク"><br>
+<label for="year">出版年　　　　　</label><input type="text" id="year" placeholder="出版年"><br><br><br>
+<button onclick="generateIeeeCitation()">生成</button>
+<br><br><hr><br>
+<textarea id="output" readonly rows="10" cols="100"></textarea>
+<button onclick="copyToClipboard()">クリップボードにコピー</button>
+
+<script>
+    const now = new Date();
+    const monthNames = ["Jan.", "Feb.", "Mar.", "Apr.", "May", "June", "July", "Aug.", "Sept.", "Oct.", "Nov.", "Dec."];
+    const ac = monthNames[now.getMonth()] + ' ' + now.getDate() + ', ' + now.getFullYear();
+
+    function generateIeeeCitation() {
+        let author = document.getElementById("author");
+        let title = document.getElementById("title");
+        let url = document.getElementById("url");
+        let year = document.getElementById("year");
+        let source = document.getElementById("source");
+        let error_message = document.getElementById("error_message");
+
+        let textFields = [
+            {field: author, name: "著者"},
+            {field: title, name: "タイトル"},
+            {field: url, name: "URL"},
+            {field: source, name: "ソース"}
+        ];
+
+        let missingFields = [];
+
+        textFields.forEach(tf => {
+            if (tf.field.value.trim() == '') {
+                tf.field.classList.add("error");
+                missingFields.push(tf.name);
+            } else {
+                tf.field.classList.remove("error");
+            }
+        });
+
+        if (missingFields.length > 0) {
+            error_message.innerHTML = "⚠️" + missingFields.join(", ") + "は入力必須項目です";
+            error_message.style.display = "block";
+            return;
+        } else {
+            error_message.style.display = "none";
+        }
+
+        let citation = `${author.value}, "${title.value}," ${source.value}, ${year.value.trim() === '' ? '(n.d.)' : year.value}. [Online]. Available: ${url.value}. Accessed on: ${ac}.`;
+
+        document.getElementById("output").value = citation;
+    }
+
+    function copyToClipboard() {
+        let output = document.getElementById("output");
+        output.select();
+        output.setSelectionRange(0, 99999);
+        document.execCommand("copy");
+        alert("クリップボードにコピーしました");
+    }
+</script>
+</body>
+</html>
+
+<style>
+    body {
+        flex-direction: column;
+        align-items: center;
+        font-family: Arial, sans-serif;
+    }
+
+    input[type="text"] {
+        width: 60%; /* 横幅を変更 */
+        height: 30px; /* 縦幅を変更 */
+    }
+</style>
