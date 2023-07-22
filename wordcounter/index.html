@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../css/head.css">
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+    <title>Word Counter</title>
+    <style>
+        .error {
+            background-color: #f2dede;
+            border: 1pt solid #ff0000;
+        }
+
+        input {
+            border-radius: 0; /* 角を完全な四角形にするために0に設定 */
+            border: 1px solid gray;
+            padding: 10px;
+            width: 80%;
+            margin: 8px;
+        }
+
+        textarea {
+            resize: none; /* ドラッグでのサイズ変更を無効にする */
+        }
+
+        .content input {
+            display: grid;
+        }
+
+        button {
+            color: white;
+        }
+
+        .btn-success {
+            background-color: #00a65a;
+            border-color: #008d4c;
+        }
+
+        .btn-success:hover {
+            background-color: darkgreen;
+            border-color: darkgreen;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 6px 12px;
+            margin-bottom: 0;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 1.42857143;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: middle;
+            -ms-touch-action: manipulation;
+            touch-action: manipulation;
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            background-image: none;
+            border: 1px solid transparent;
+            border-radius: 4px;
+        }
+
+        .alert-warning, .bg-yellow, .callout.callout-warning, .label-warning, .modal-warning .modal-body {
+            background-color: #f39c12!important;
+            color: white;
+            padding: 15px;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            border: 1px solid transparent;
+            border-radius: 4px;
+        }
+
+        .main-title {
+            background-color: #303030;
+            padding-top: 25px;
+            padding-left: 80px;
+            padding-bottom: 25px;
+            color: white;
+            width: 100%;
+            position: fixed;
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" href="../css/nav.css">
+</head>
+<body>
+
+
+<div class="openbtn1"><span></span><span></span><span></span></div>
+<nav id="g-nav">
+    <div id="g-nav-list"><!--ナビの数が増えた場合縦スクロールするためのdiv※不要なら削除-->
+        <ul>
+            <li><a href="../IEEE">IEEE</a></li>
+            <li><a href="../wordcounter">Word Counter</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="main-title">Word Counter</div>
+<div class="content">
+    <br><br><br><br><br>
+    <textarea id="count-content" rows="50" placeholder="ここに英文を入力してください" cols="100%"></textarea><br>
+
+    <button class="btn btn-success submit" onclick="wordcount()"><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><style>svg{fill:#ffffff}</style><path d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V274.7l-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7V32zM64 352c-35.3 0-64 28.7-64 64v32c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V416c0-35.3-28.7-64-64-64H346.5l-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352H64zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"/></svg> 情報を表示</button>
+    <br><br><br><br>
+</div>
+
+<script>
+    function wordcount() {
+        const textarea = document.getElementById("count-content");
+        const text = textarea.value.trim(); // 先頭と末尾の空白を除去
+
+        if (text === "") {
+            alert("入力がありません");
+            return;
+        }
+
+
+        const wordArray = text.split(/\s+/); // 空白文字（スペース、タブ、改行）で区切る
+        const wordCount = wordArray.length;
+        alert(wordCount + " 単語です");
+
+
+    }
+</script>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="../js/nav.js"></script>
+</body>
+</html>
