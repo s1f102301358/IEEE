@@ -16,7 +16,7 @@
             border: 1px solid gray;
             padding: 10px;
             width: 80%;
-            margin: 6px;
+            margin: 8px;
         }
 
         textarea {
@@ -72,38 +72,35 @@
             border: 1px solid transparent;
             border-radius: 4px;
         }
+
+        .main-title {
+            background-color: #303030;
+            padding-top: 25px;
+            padding-left: 80px;
+            padding-bottom: 25px;
+            color: white;
+            width: 100%;
+            position: fixed;
+        }
     </style>
+    <link rel="stylesheet" type="text/css" href="css/nav.css">
 </head>
 <body>
-<header>
-</header>
-<div class="sidebar">
-    <ul>
-        <div class="sidebar-item">
-            <a href="/IEEE"><li>IEEE</li></a>
-        </div>
-    </ul>
-</div>
-<script>
-    var sidebar = document.querySelector('.sidebar');
-    var close = document.getElementById('close');
 
-    document.querySelector('.hamburger-menu').addEventListener('click', function() {
-        if (sidebar.style.transform === 'translateX(0px)') {
-            sidebar.style.transform = 'translateX(-100%)';
-        } else {
-            sidebar.style.transform = 'translateX(0)';
-        }
-    });
 
-    close.onclick = function() {
-        sidebar.style.transform = 'translateX(-100%)';
-    }
-</script>
-</div>
+<div class="openbtn1"><span></span><span></span><span></span></div>
+<nav id="g-nav">
+    <div id="g-nav-list"><!--ナビの数が増えた場合縦スクロールするためのdiv※不要なら削除-->
+        <ul>
+            <li><a href="#">IEEE</a></li>
+            <li><a href="#">Word Counter</a></li>
+        </ul>
+    </div>
+</nav>
 
+<div class="main-title">IEEE Citation Generator</div>
 <div class="content">
-    <h1>IEEE Citation Generator</h1>
+    <br><br><br><br><br>
     <!--<div class="alert alert-warning problem-closed-only" role="alert" style=""><i class="fa fa-exclamation-triangle"></i> v2.0アップデート！</div>-->
     <p id="error_message" style="color: red; display: none;"></p>
     <label for="author"><b>著者</b></label><input type="text" id="author" placeholder="著者名"><br>
@@ -170,5 +167,8 @@
         alert("クリップボードにコピーしました");
     }
 </script>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="js/nav.js"></script>
 </body>
 </html>
