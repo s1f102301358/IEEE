@@ -7,8 +7,8 @@
     <title>IEEE Citation Generator</title>
     <style>
         .error {
-            border: 2px solid red;
-            border-radius: 3px;
+            background-color: #f2dede;
+            border: 1pt solid #ff0000;
         }
 
         input {
@@ -104,18 +104,18 @@
 
 <div class="content">
     <h1>IEEE Citation Generator</h1>
-    <div class="alert alert-warning problem-closed-only" role="alert" style=""><i class="fa fa-exclamation-triangle"></i> v2.0アップデート！</div>
+    <!--<div class="alert alert-warning problem-closed-only" role="alert" style=""><i class="fa fa-exclamation-triangle"></i> v2.0アップデート！</div>-->
     <p id="error_message" style="color: red; display: none;"></p>
-    <label for="author">著者</label><input type="text" id="author" placeholder="著者名"><br>
-    <label for="title">タイトル</label><input type="text" id="title" placeholder="記事名"><br>
-    <label for="source">ソース</label><input type="text" id="source" placeholder="ソース名"><br>
-    <label for="url">URL</label><input type="text" id="url" placeholder="Webサイトのリンク"><br>
-    <label for="year">出版年</label><input type="text" id="year" placeholder="出版年"><br><br>
+    <label for="author"><b>著者</b></label><input type="text" id="author" placeholder="著者名"><br>
+    <label for="title"><b>タイトル</b></label><input type="text" id="title" placeholder="記事名"><br>
+    <label for="source"><b>ソース</b></label><input type="text" id="source" placeholder="ソース名"><br>
+    <label for="url"><b>URL</b></label><input type="text" id="url" placeholder="Webサイトのリンク"><br>
+    <label for="year"><b>出版年</b></label><input type="text" id="year" placeholder="出版年"><br><br>
     <button onclick="generateIeeeCitation()" class="btn btn-success submit" type="button"><i class="fa fa-arrow-circle-up"></i> 生成する</button>
     <br><br><hr><br>
     <textarea id="output" readonly rows="10" cols="100%"></textarea>
-    <button class="btn btn-success submit" onclick="copyToClipboard()">クリップボードにコピー</button>
-
+    <button class="btn btn-success submit" onclick="copyToClipboard()"><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><style>svg{fill:#ffffff}</style><path d="M64 464H288c8.8 0 16-7.2 16-16V384h48v64c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V224c0-35.3 28.7-64 64-64h64v48H64c-8.8 0-16 7.2-16 16V448c0 8.8 7.2 16 16 16zM224 352c-35.3 0-64-28.7-64-64V64c0-35.3 28.7-64 64-64H448c35.3 0 64 28.7 64 64V288c0 35.3-28.7 64-64 64H224z"/></svg> クリップボードにコピー</button>
+    <br><br><br><br>
 </div>
 
 <script>
@@ -150,7 +150,7 @@
         });
 
         if (missingFields.length > 0) {
-            error_message.innerHTML = "⚠️" + missingFields.join(", ") + "は入力必須項目です";
+            error_message.innerHTML = "<i class=\"fa fa-exclamation-triangle\" style=\"color: #ff0000;\"></i> " + missingFields.join(", ") + "は入力必須項目です";
             error_message.style.display = "block";
             return;
         } else {
