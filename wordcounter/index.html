@@ -101,7 +101,12 @@
 <div class="main-title">Word Counter</div>
 <div class="content">
     <br><br><br><br><br>
-    <textarea id="count-content" rows="50" placeholder="ここに英文を入力してください" cols="100%"></textarea><br>
+    <div class="alert alert-warning problem-closed-only" role="alert" style=""><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><style>svg{fill:#ffffff}</style><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-208a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"/></svg>
+        <b>Word Counter</b><br>
+        テキストエリアに入力された文章の文字数と単語数を表示します。<br>
+        単語数については、<u>入力された文章が英文である場合のみ</u>正確に表示されます。
+    </div>
+    <textarea id="count-content" rows="50" placeholder="ここに文章を入力してください" cols="100%"></textarea><br>
 
     <button class="btn btn-success submit" onclick="wordcount()"><svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><style>svg{fill:#ffffff}</style><path d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V274.7l-73.4-73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l128 128c12.5 12.5 32.8 12.5 45.3 0l128-128c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L288 274.7V32zM64 352c-35.3 0-64 28.7-64 64v32c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V416c0-35.3-28.7-64-64-64H346.5l-45.3 45.3c-25 25-65.5 25-90.5 0L165.5 352H64zm368 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"/></svg> 情報を表示</button>
     <br><br><br><br>
@@ -113,16 +118,17 @@
         const text = textarea.value.trim(); // 先頭と末尾の空白を除去
 
         if (text === "") {
-            alert("入力がありません");
+            alert("テキストエリアに文字を入力してください！");
             return;
         }
 
-
-        const wordArray = text.split(/\s+/); // 空白文字（スペース、タブ、改行）で区切る
+        const wordArray = text.split(/\s+/);
         const wordCount = wordArray.length;
-        alert(wordCount + " 単語です");
-
-
+        const charCount = text.length;
+        alert(
+            charCount + " 文字\n" +
+            + wordCount + " 単語"
+        );
     }
 </script>
 
